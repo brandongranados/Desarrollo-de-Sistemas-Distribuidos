@@ -1,0 +1,15 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "/home/brandon/Descargas/apache-tomcat-8.5.81/lib/servlet-api.jar",
+            "tarea8/lib/javax.servlet.jar",
+            "/home/brandon/Descargas/javax.servlet.jar"
+        ],
+        "exclude": [
+            "/tarea8/lib/mysql-connector-java-8.0.29.jar"
+        ]
+    }
+}

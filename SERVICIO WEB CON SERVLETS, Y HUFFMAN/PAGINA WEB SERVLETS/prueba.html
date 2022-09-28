@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/nodo.js"></script>
+    <script src="./js/quicksort.js"></script>
+    <script src="./js/respCompressJSON.js"></script>
+    <script src="./js/compressHuffman.js"></script>
+    <script src="./js/decompressHuffman.js"></script>
+    <script>
+        var carga = document.addEventListener("DOMContentLoaded", function(){
+            var selector = document.getElementById("img");
+            selector.addEventListener("change", function(){
+
+                if(selector.files[0])
+                {
+                    var arrayImg = new FileReader();
+                    arrayImg.readAsArrayBuffer(selector.files[0]);
+                    arrayImg.onload = function()
+                    {
+                        var bytes64Foto = "";
+                        if(selector.files[0])
+                            bytes64Foto = btoa(new Uint8Array(arrayImg.result));
+                        muestra(bytes64Foto);
+                    };
+                }
+            });
+            function muestra(bytes64Foto)
+            {
+                var imagen = document.getElementById("imagen");
+                var comprimeIMG = new compressHuffman("BRANDON ANTONIO CASIANO GRANADOS JAJAJAJAJAJ TODOS ME LA PELAN r2qfnco3y8rwbha8ui2wea");
+                var imgDescompress = new decompressHuffman(comprimeIMG.infoCompressJSON());
+                /*var crudImgDecod = atob(imgDescompress.decompressFromBase64()).split(",");
+                var imgBytes = new Uint8Array(crudImgDecod.length);
+                for(i=0; i<crudImgDecod.length; i++)
+                    imgBytes[i] = parseInt(crudImgDecod[i]);
+                var img = new Blob([imgBytes], {type : 'image'});
+                imagen.setAttribute("src", URL.createObjectURL(img));
+                imagen.style.width = "100px";
+                imagen.style.height = "100px";
+                bytes64Foto == imgDescompress.decompressFromBase64() ? console.log("TODO BIEN") : console.log("TODO MAL");*/
+                console.log(bytes64Foto);
+                console.log(imgDescompress.decompressFromBase64());
+            }
+        });
+    </script>
+</head>
+<body>
+    <input type="file" name="imagen" id="img">
+    <br>
+    <img src="" alt="" srcset="" id="imagen">
+</body>
+</html>

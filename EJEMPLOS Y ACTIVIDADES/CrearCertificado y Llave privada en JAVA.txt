@@ -1,0 +1,19 @@
+INSTRUCCIONES PARA CREAR LLAVES PRIVADAS, PUBLICAS Y PARA CREAR REOSIORIOS DE CERTIFICADOS Y LLAVES JAVA
+
+1.- keytool -genkeypair -keylag RSA -alias certificadoServidor -keystore keystoreServidor.jks -storepass contraeñaServidor
+
+genkeypair genera un par de claves publica y privada, la publica se pone en un certificado autofirmado.
+
+el alias en este caso certidficadoServidor es para identificar el certificado
+
+keystore es un archivo que funge como repositorio donde se almacenan los certificados y llaves PRIVADAS
+
+keylag es el algoritmo que se utiliza para generar el par de claves en este caso RSA
+
+storepass es la contraseña para la keystore.
+
+2.- Tenemos que extraer el certificado del repositoio "Keystore" para que el cliente pueda encriptar la informacion 
+
+keytool -import -alias certificadoServidor -file certificadoServidor.pem -keystore keystoreCliente.jks -storepass
+
+import lee el archivo certificadoServidor.pem y lo inserta en el keystore que se crea para el cliente
